@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Interface</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <button class="new-conversation">+ New Conversation</button>
+            <div class="conversation-list">
+                <div class="conversation">Hello, what are</div>
+            </div>
+            <div class="settings">
+                <div class="setting">
+                    <span>Model</span>
+                    <span>GPT-3.5-turbo</span>
+                </div>
+                <div class="setting">
+                    <span>Provider</span>
+                    <span>Auto</span>
+                </div>
+                <div class="setting">
+                    <span>Jailbreak</span>
+                    <span>Default</span>
+                </div>
+                <div class="setting">
+                    <span>Language</span>
+                    <span>en_US</span>
+                </div>
+                <div class="setting">
+                    <span>Web Access</span>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="setting">
+                    <span>Dark Mode</span>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="version">Version: 0.4</div>
+        </div>
+        <div class="chat-area">
+            <div class="messages">
+                <div class="message user">
+                    <div class="avatar">👤</div>
+                    <div class="content">Hello, what are you</div>
+                </div>
+                <div class="message bot">
+                    <div class="avatar">🤖</div>
+                    <div class="content">Hello! I am GPTGO, a Google search engine bot incorporating ChatGPT's answers. I'm here to help answer your questions and provide information. How can I assist you today?</div>
+                </div>
+            </div>
+            <div class="input-area">
+                <input type="text" placeholder="Ask a question">
+                <button class="send">➤</button>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

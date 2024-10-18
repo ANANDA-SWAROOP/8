@@ -1,0 +1,177 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #2a2a2a;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.new-conversation {
+    background-color: #3a3a3a;
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.conversation-list {
+    flex-grow: 1;
+}
+
+.conversation {
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: #3a3a3a;
+}
+
+.settings {
+    margin-top: 20px;
+}
+
+.setting {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.version {
+    font-size: 12px;
+    color: #888;
+    margin-top: 20px;
+}
+
+.chat-area {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.messages {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.message {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    background-color: #3a3a3a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.content {
+    background-color: #3a3a3a;
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 70%;
+}
+
+.input-area {
+    display: flex;
+    padding: 20px;
+}
+
+.input-area input {
+    flex-grow: 1;
+    padding: 10px;
+    border: none;
+    background-color: #3a3a3a;
+    color: #ffffff;
+}
+
+.input-area button {
+    background-color: #3a3a3a;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+/* Add this at the end of your existing CSS */
+
+body.dark-mode {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+body:not(.dark-mode) {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* You may need to adjust other styles to handle both light and dark modes */
