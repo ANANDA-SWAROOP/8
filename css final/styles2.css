@@ -1,0 +1,527 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #333333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 300px; /* Adjust as needed */
+    transform: translateX(0);
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: 1000;
+    background-color: #f5f5f5; /* Ensure this matches your design */
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.sidebar.closed {
+    transform: translateX(-100%);
+}
+
+.new-conversation {
+    font-family: 'Poppins', sans-serif;
+    background-color: #8e44ad; /* Changed to the specified purple color */
+    color: #ffffff;
+    border: none;
+    padding: 12px 20px;
+    margin: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.new-conversation:hover {
+    background-color: #7d3c98; /* Slightly darker shade for hover effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+}
+
+.new-conversation::before {
+    content: "+";
+    margin-right: 8px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.conversation-list {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 0 16px;
+}
+
+.conversation {
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.conversation:hover {
+    background-color: #e6e6e7;
+}
+
+.conversation.active {
+    background-color: #e6e6e7;
+}
+
+.conversation-title {
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.conversation-preview {
+    font-size: 0.9em;
+    color: #666;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sidebar-content {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.dark-mode-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #e0e0e0; /* Darker grey background */
+    border-radius: 20px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2); /* Slightly stronger inner shadow */
+}
+
+.dark-mode-toggle span {
+    font-size: 18px;
+    font-weight: 500;
+    margin-right: 8px;
+    color: #333;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.version {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+.chat-area {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    transition: margin-left 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    margin-left: 300px; /* Should match the sidebar width */
+    padding-left: 60px; /* Adjust as needed */
+    width: calc(100% - 300px); /* Adjust based on sidebar width */
+}
+
+.chat-area.full-width {
+    margin-left: 0;
+    width: 100%;
+}
+
+.messages {
+    flex-grow: 1;
+    padding: 24px;
+    overflow-y: auto;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.message {
+    display: flex;
+    margin-bottom: 24px;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+    font-size: 20px;
+}
+
+.content {
+    background-color: #f7f7f8;
+    padding: 16px;
+    border-radius: 12px;
+    max-width: 70%;
+}
+
+.input-area {
+    display: flex;
+    padding: 24px;
+    border-top: 1px solid #e0e0e0;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.input-area input[type="text"] {
+    flex-grow: 1;
+    padding: 12px 16px;
+    border: 1px solid #d1d1d1;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif; /* Added Poppins font */
+    background-color: #f0f0f0;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.input-area input[type="text"]::placeholder {
+    font-family: 'Poppins', sans-serif; /* Added Poppins font for placeholder text */
+    color: #999;
+}
+
+.input-area input[type="text"]:focus {
+    outline: none;
+    border-color: #a0a0a0;
+    background-color: #e6e6e6; /* Slightly darker grey when focused */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.input-area button {
+    background-color: #8e44ad;
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    margin-left: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+.input-area button:hover {
+    background-color: #7d3c98;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+body.dark-mode .sidebar {
+    background-color: #2a2a2a;
+    border-right-color: #3a3a3a;
+}
+
+body.dark-mode .new-conversation {
+    background-color: #9b59b6;
+}
+
+body.dark-mode .new-conversation:hover {
+    background-color: #8e44ad;
+}
+
+body.dark-mode .conversation:hover,
+body.dark-mode .conversation.active {
+    background-color: #3a3a3a;
+}
+
+body.dark-mode .chat-area {
+    background-color: #1a1a1a;
+}
+
+body.dark-mode .content {
+    background-color: #2a2a2a;
+}
+
+body.dark-mode .input-area {
+    border-top-color: #3a3a3a;
+}
+
+body.dark-mode .input-area input {
+    background-color: #2a2a2a;
+    border-color: #3a3a3a;
+    color: #ffffff;
+}
+
+body.dark-mode .input-area button {
+    background-color: #9b59b6;
+}
+
+body.dark-mode .input-area button:hover {
+    background-color: #8e44ad;
+}
+
+body.dark-mode, 
+body.dark-mode .container, 
+body.dark-mode .sidebar, 
+body.dark-mode .chat-area, 
+body.dark-mode .input-area, 
+body.dark-mode .messages, 
+body.dark-mode .message,
+body.dark-mode .new-conversation, 
+body.dark-mode .send, 
+body.dark-mode input[type="text"] {
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Faster transition for text color */
+body, .container, .sidebar, .chat-area, .input-area, .messages, .message, .new-conversation, .send, input[type="text"], input[type="text"]::placeholder {
+    transition: color 0.15s ease; /* Faster color transition */
+}
+
+/* Add this to your existing dark mode styles */
+body.dark-mode, 
+body.dark-mode .container, 
+body.dark-mode .sidebar, 
+body.dark-mode .chat-area, 
+body.dark-mode .input-area, 
+body.dark-mode .messages, 
+body.dark-mode .message,
+body.dark-mode .new-conversation, 
+body.dark-mode .send, 
+body.dark-mode input[type="text"],
+body.dark-mode input[type="text"]::placeholder {
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, color 0.15s ease;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px; /* Adjust if needed */
+    height: 24px; /* Adjust if needed */
+    flex-shrink: 0; /* Prevents the switch from shrinking */
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #8e44ad;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Remove or comment out ALL of these if they exist */
+
+/*
+.chat-icon {
+    padding: 4px;
+    border: 2px solid #8e44ad;
+    border-radius: 50%;
+    background-color: rgba(142, 68, 173, 0.1);
+}
+*/
+
+/*
+.messages .message.bot::before {
+    content: '';
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    background-image: url('path/to/your/bot-icon.png');
+    background-size: cover;
+    border: 2px solid #8e44ad;
+    border-radius: 50%;
+}
+*/
+
+/*
+.messages .message.bot .icon {
+    border: 2px solid #8e44ad;
+    border-radius: 50%;
+    padding: 2px;
+    box-sizing: content-box;
+}
+*/
+
+/* Dark mode styles for input */
+body.dark-mode .input-area input[type="text"] {
+    background-color: #f0f0f0; /* Light background in dark mode */
+    color: #333; /* Dark text color */
+    border-color: #666; /* Darker border color */
+}
+
+body.dark-mode .input-area input[type="text"]::placeholder {
+    color: #777; /* Darker placeholder text color */
+}
+
+body.dark-mode .input-area input[type="text"]:focus {
+    background-color: #ffffff; /* White background when focused */
+    border-color: #888; /* Lighter border when focused */
+}
+
+.sidebar-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+}
+
+.close-sidebar {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.close-sidebar:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.close-sidebar svg {
+    width: 24px;
+    height: 24px;
+    stroke: #666;
+    transition: stroke 0.3s ease;
+}
+
+.close-sidebar:hover svg {
+    stroke: #333;
+}
+
+/* Dark mode styles */
+body.dark-mode .close-sidebar:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .close-sidebar svg {
+    stroke: #ccc;
+}
+
+body.dark-mode .close-sidebar:hover svg {
+    stroke: #fff;
+}
+
+.open-sidebar {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.3s ease-in-out;
+    background-color: #8e44ad; /* Purple background */
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.open-sidebar:hover {
+    background-color: #9b59b6; /* Lighter purple on hover */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.open-sidebar svg {
+    width: 24px;
+    height: 24px;
+    stroke: white;
+    transition: transform 0.3s ease;
+}
+
+.open-sidebar:hover svg {
+    transform: scale(1.1);
+}
+
+body.sidebar-closed .open-sidebar {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0.2s; /* Slight delay to appear after sidebar closes */
+}
+
+/* Adjust for dark mode if needed */
+body.dark-mode .open-sidebar {
+    background-color: #6c3483; /* Darker purple for dark mode */
+}
+
+body.dark-mode .open-sidebar:hover {
+    background-color: #7d3c98; /* Slightly lighter purple for dark mode hover */
+}
+
+/* Optional: Adjust container width if needed */
+.sidebar-footer {
+    padding: 10px;
+    min-width: 220px; /* Slightly increased to accommodate centered text */
+}
+
+/* Dark mode styles */
+body.dark-mode .dark-mode-toggle {
+    background-color: #2a2a2a; /* Even darker background in dark mode */
+}
+
+body.dark-mode .dark-mode-toggle span {
+    color: #f0f0f0; /* Lighter text in dark mode */
+}
+
+/* Ensure enough space for the toggle */
+.sidebar-footer {
+    padding: 10px;
+    min-width: 220px; /* Slightly increased to accommodate centered text */
+}
