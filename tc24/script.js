@@ -7,12 +7,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const webAccessToggle = document.querySelector('input[type="checkbox"]');
     const darkModeToggle = document.querySelectorAll('input[type="checkbox"]')[1];
 
+    // Set initial mode
+    document.body.classList.toggle('dark-mode', darkModeToggle.checked);
+
     // New Conversation button
     newConversationBtn.addEventListener('click', () => {
         const newConversation = document.createElement('div');
         newConversation.className = 'conversation';
         newConversation.textContent = 'New Conversation';
         conversationList.appendChild(newConversation);
+        
+        // Add click event to the new conversation
+        newConversation.addEventListener('click', () => {
+            console.log('Conversation clicked:', newConversation.textContent);
+            // Add functionality for switching to this conversation
+        });
     });
 
     // Send message function

@@ -1,5 +1,8 @@
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #1e1e1e;
@@ -26,6 +29,13 @@ body {
     padding: 10px;
     margin-bottom: 20px;
     cursor: pointer;
+    border-radius: 8px; /* Add rounded corners */
+    box-shadow: 0 0 0 4px #333333; /* Add padding with a shade of grey */
+    transition: box-shadow 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.new-conversation:hover {
+    box-shadow: 0 0 0 4px #444444; /* Lighter shade on hover */
 }
 
 .conversation-list {
@@ -33,9 +43,16 @@ body {
 }
 
 .conversation {
-    padding: 10px;
+    padding: 8px 12px;
     margin-bottom: 5px;
     background-color: #3a3a3a;
+    border-radius: 15px; /* Rounder edges */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.conversation:hover {
+    background-color: #4a4a4a;
 }
 
 .settings {
@@ -131,6 +148,19 @@ input:checked + .slider:before {
     align-items: center;
     justify-content: center;
     margin-right: 10px;
+    position: relative; /* Add this to position the ring */
+}
+
+.avatar::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 50%;
+    border: 2px solid #a0a0a0; /* Light grayish white color */
+    pointer-events: none; /* Ensures the ring doesn't interfere with clicks */
 }
 
 .content {
@@ -142,24 +172,37 @@ input:checked + .slider:before {
 
 .input-area {
     display: flex;
-    padding: 20px;
+    padding: 5px 10px;
+    align-items: center;
+    background-color: #2a2a2a; /* Dark grey background for padding */
+    border-radius: 20px; /* Slightly reduced rounded corners for a sleeker look */
+    margin: 10px 20px; /* Add some margin around the input area */
 }
 
 .input-area input {
     flex-grow: 1;
-    padding: 10px;
+    padding: 8px 15px;
     border: none;
     background-color: #3a3a3a;
     color: #ffffff;
+    border-radius: 15px;
+    height: 32px;
+    font-size: 14px;
 }
 
 .input-area button {
     background-color: #3a3a3a;
     color: #ffffff;
     border: none;
-    padding: 10px 20px;
-    margin-left: 10px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-left: 8px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
 }
 
 /* Add this at the end of your existing CSS */
@@ -170,8 +213,56 @@ body.dark-mode {
 }
 
 body:not(.dark-mode) {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: #f5f5f5;
+    color: #333333;
+}
+
+body:not(.dark-mode) .sidebar {
+    background-color: #e8e8e8;
+}
+
+body:not(.dark-mode) .new-conversation {
+    background-color: #d8d8d8; /* Slightly darker grey */
+    color: #333333;
+    box-shadow: 0 0 0 4px #c8c8c8;
+}
+
+body:not(.dark-mode) .new-conversation:hover {
+    box-shadow: 0 0 0 4px #b8b8b8;
+}
+
+body:not(.dark-mode) .conversation {
+    background-color: #d8d8d8;
+}
+
+body:not(.dark-mode) .conversation:hover {
+    background-color: #c8c8c8;
+}
+
+body:not(.dark-mode) .avatar {
+    background-color: #d0d0d0;
+}
+
+body:not(.dark-mode) .avatar::after {
+    border-color: #808080;
+}
+
+body:not(.dark-mode) .content {
+    background-color: #d8d8d8; /* Same color as new-conversation and conversation */
+}
+
+body:not(.dark-mode) .input-area {
+    background-color: #d0d0d0;
+}
+
+body:not(.dark-mode) .input-area input {
+    background-color: #e8e8e8;
+    color: #333333;
+}
+
+body:not(.dark-mode) .input-area button {
+    background-color: #c8c8c8;
+    color: #333333;
 }
 
 /* You may need to adjust other styles to handle both light and dark modes */
